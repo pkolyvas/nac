@@ -25,9 +25,121 @@ variable "aws_secret_key" {
   description = "Your AWS secret access key."
 }
 
-##### 
+####################
+# Nightscout options
+####################
+
+variable "disable" {
+  type        = string
+  default     = ""
+  description = "Used to disable default features, expects a space delimited list."
+}
+
+variable "base_url" {
+  type        = string
+  default     = ""
+  description = "Used for building links to your site's API, i.e. Pushover callbacks, usually the URL of your Nightscout site."
+}
+
+variable "auth_default_roles" {
+  type        = string
+  default     = ""
+  description = "Possible values `readable`, `denied`, or any valid role name. When readable, anyone can view Nightscout without a token. Setting it to `denied` will require a token from every visit, using status-only will enable api-secret based login."
+}
+
+variable "import_config" {
+  type        = string
+  default     = ""
+  description = "Used to import settings and extended settings from a url such as a gist."
+}
+
+variable "treatments_auth" {
+  type        = string
+  default     = ""
+  description = "Possible values on or off. Deprecated, if set to off the careportal role will be added to AUTH_DEFAULT_ROLES."
+}
+
+variable "alarm_types" {
+  type        = string
+  default     = ""
+  description = "simple and/or predict."
+}
+
+variable "bg_high" {
+  type        = string
+  default     = ""
+  description = "Urgent High BG threshold, triggers the ALARM_URGENT_HIGH alarm."
+}
+
+variable "bg_low" {
+  type        = string
+  default     = ""
+  description = "Urgent Low BG threshold, triggers the ALARM_URGENT_LOW alarm."
+}
+
+variable "bg_target_bottom" {
+  type        = string
+  default     = ""
+  description = "Low BG threshold, triggers the ALARM_LOW alarm."
+}
+
+variable "bg_target_top" {
+  type        = string
+  default     = ""
+  description = "High BG threshold, triggers the ALARM_HIGH alarm."
+}
+
+variable "alarm_urgent_high" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for the Urgent High alarm (triggered when BG crosses BG_HIGH). (on or off)."
+}
+
+variable "alarm_high" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for the High alarm (triggered when BG crosses BG_TARGET_TOP). (on or off)"
+}
+
+variable "alarm_low" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for the Low alarm (triggered when BG crosses BG_TARGET_BOTTOM). (on or off)"
+}
+
+variable "alarm_urgent_low" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for the Urgent Low alarm (triggered when BG crosses BG_LOW). (on or off)"
+}
+
+variable "alarm_timeago_urgent" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for an urgent alarm when CGM data hasn't been received in the number of minutes set in ALARM_TIMEAGO_URGENT_MINS. on or off)"
+}
+
+variable "alarm_timeago_urgent_mins" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for the number of minutes since the last CGM reading to trigger an ALARM_TIMEAGO_URGENT alarm."
+}
+
+variable "alarm_timeago_warn" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for a warning alarm when CGM data hasn't been received in the number of minutes set in ALARM_TIMEAGO_WARN_MINS. (on or off)"
+}
+
+variable "alarm_timeago_warn_mins" {
+  type        = string
+  default     = ""
+  description = "Default setting for new browser views, for the number of minutes since the last CGM reading to trigger an ALARM_TIMEAGO_WARN alarm."
+}
+
+###########################################
 # Additional configuration option variables
-####
+###########################################
 variable "nightscout_image" {
   type        = string
   default     = "nightscout/cgm-remote-monitor"
